@@ -1,3 +1,11 @@
+import { applyMiddleware, createStore } from "redux";
+import logger from "./firstMiddleware";
+import rootReducer from "./rootReducer";
+
+const store = createStore(rootReducer, applyMiddleware(logger));
+
+export default store;
+
 // import { createStore } from "redux";
 // import counterReducer from "./counter/counterReducer";
 
@@ -10,10 +18,3 @@
 // export default store;
 
 // -----------eta ager version. Counter Component chalate hle eta diye cholbe----------------
-
-import { createStore } from "redux";
-import rootReducer from "./rootReducer";
-
-const store = createStore(rootReducer);
-
-export default store;
