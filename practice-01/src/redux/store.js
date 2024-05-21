@@ -1,10 +1,19 @@
+// import { createStore } from "redux";
+// import counterReducer from "./counter/counterReducer";
+
+// // redux related sob kichu redux folder e thakbe. Folder joto gulo e hok, store ektai. Ekhan theke e sob reducer k access korte hobe.
+
+// // create redux store using createStore(). Now access the reducer and updated state from the store.
+
+// const store = createStore(counterReducer);
+
+// export default store;
+
+// -----------eta ager version. Counter Component chalate hle eta diye cholbe----------------
+
 import { createStore } from "redux";
-import counterReducer from "./counter/counterReducer";
+import rootReducer from "./rootReducer";
 
-// redux related sob kichu redux folder e thakbe. Folder joto gulo e hok, store ektai. Ekhan theke e sob reducer k access korte hobe.
-
-// create redux store using createStore(). Now access the reducer and updated state from the store.
-
-const store = createStore(counterReducer);
+const store = createStore(rootReducer);
 
 export default store;

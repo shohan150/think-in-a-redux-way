@@ -29,10 +29,10 @@ function Counter({ count, increment, decrement, id }) {
 
 //Ei function theke ekta object return korte hobe. shei object tai muloto hobe props.
 
-//I GUESS, initially react-redux Provider e deya store theke, initialState k mapStateToProps e state hisbe pathai. Tarpor kono action dispatch hle store updated state pathai dei o shei updated state k tokhon prop hisebe pathai. Kintu amar prosno j multiple reducer hle tokhon kivabe manage korbe? store ektai r initialstate ektai whole application e? emon to hobe e na. Right!? Right??! Or may be sob state asole e initial state er vitore e thakbe?! R reducer ektai! karon, onk gulo reducer thakle, kon reducer er state k nite hobe seta samne sikhbo asha kori. dekha jak samne ki hoi.
+//I GUESS, initially react-redux Provider e deya store theke, initialState k mapStateToProps e state hisbe pathai. Tarpor kono action dispatch hle store updated state pathai dei o shei updated state k tokhon prop hisebe pathai. Kintu amar prosno j multiple reducer hle tokhon kivabe manage korbe? setar answer VariableCounter e paba. Sekhane comninator er vitor reducer j point kore dilei, shei reducer er initalState niye nibe.
 
 const mapStateToProps = (state, ownProps) => {
-  // state k props e convert korlam. ekhn Counter component e {count} dile, ei value ta component e Pabo.
+  // state k props e convert korlam. ekhn Counter component e {count} dile, ei value ta component e pabo.
   console.log(ownProps);
   return {
     count: state.value,
