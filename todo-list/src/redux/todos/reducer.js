@@ -8,8 +8,15 @@ import {
 } from "./actionTypes";
 import initialState from "./initialState";
 
+//New todo add korar somoy currently existing todos er id theke max id ber kore tar sathe 1 jog kore setake new todo er id hisebe rakhbo.
+
+//input hisebe current todos array k nibe. shei array er upor loop chaliye, max id value ta ber korbe. Ei loop ta chalano hbe reduce method() use kore.
 const nextTodoId = (todos) => {
-  const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1);
+  //reduce puro array er upor operation kore/ array k reduce kore ekta single output dei. se ekta callback function nei o ekta initial value (-1).
+  //ekhn callback function/ reducer 2 ta parameter nei. current state (maxId) o array element ta (todo), jar upor operation kora hobe.
+  const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), 0);
+
+  //finally, maxId er sathe 1 jog kore return kori.
   return maxId + 1;
 };
 
