@@ -4,6 +4,7 @@ import {
   CLEARCOMPLETED,
   COLORSELECTED,
   DELETED,
+  LOADED,
   TOGGLED,
 } from "./actionTypes";
 import initialState from "./initialState";
@@ -67,6 +68,9 @@ const reducer = (state = initialState, action) => {
 
     case CLEARCOMPLETED:
       return state.filter((todo) => !todo.completed);
+
+    case LOADED:
+      return action.payload;
 
     default:
       return state;

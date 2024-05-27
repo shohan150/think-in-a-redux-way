@@ -1,9 +1,16 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import fetchTodos from "../redux/todos/thunk/fetchTodos";
 import Todo from "./Todo";
 
 export default function TodoList() {
   const todos = useSelector((state) => state.todos);
   const filters = useSelector((state) => state.filters);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTodos);
+  }, [dispatch]);
 
   const filterByStatus = (todo) => {
     //filter ki kore? se puro array er upor loop kore. j array element gulo certian condition fulfill kore, tader jonno true return kore r fulfill na korle false. Tarmane filter proti iteration e sobsmoy true ba false return kore. j element gulor jonno true return kore, shei element gulo k niye notun array toiri kore.
