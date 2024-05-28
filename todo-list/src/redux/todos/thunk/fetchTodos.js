@@ -1,6 +1,6 @@
 import { loaded } from "../actions";
 
-const fetchTodos = async (dispatch, getState) => {
+const fetchTodos = async (dispatch) => {
   const responce = await fetch("http://localhost:9000/todos");
   const todos = await responce.json();
 

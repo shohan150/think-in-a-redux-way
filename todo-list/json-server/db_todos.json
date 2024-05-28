@@ -9,13 +9,13 @@
     {
       "id": 2,
       "text": "Learn Modern ES6+ JavaScript",
-      "completed": true,
+      "completed": false,
       "color": "red"
     },
     {
       "id": 3,
       "text": "Learn React JS",
-      "completed": true,
+      "completed": false,
       "color": "yellow"
     },
     {
@@ -46,9 +46,19 @@
       "id": 8
     },
     {
-      "text": "hdjhdjhdjsdh",
+      "text": "test 4",
       "completed": false,
       "id": 9
+    },
+    {
+      "text": "test with fetch 1",
+      "completed": false,
+      "id": 10
+    },
+    {
+      "text": "hi dube",
+      "completed": false,
+      "id": 12
     }
   ]
 }
