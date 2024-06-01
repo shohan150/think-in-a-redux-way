@@ -1,9 +1,11 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { add } from "../redux/books/actionIdentifiers";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { add, edit } from "../redux/books/actionIdentifiers";
+import { startEdit } from "../redux/form/actionIdentifiers";
 
 export default function Form() {
   const dispatch = useDispatch();
+  const { isEdit, bookData } = useSelector((state) => state.form);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -13,6 +15,11 @@ export default function Form() {
     rating: "",
     isFeatured: false,
   });
+
+  useEffect(() => {
+    isEdit && setFormData(bookData);
+  }, [bookData, isEdit]);
+
   function handleChange(name, value) {
     // third bracket used for dynamic property naming. Else it would TrackEvent, name: the value. but now it will create a property based on the value passed to name.
     setFormData({ ...formData, [name]: value });
@@ -31,9 +38,25 @@ export default function Form() {
     });
   }
 
+  function handleUpdate(event) {
+    event.preventDefault();
+    dispatch(edit(formData));
+    dispatch(startEdit(false));
+    setFormData({
+      title: "",
+      author: "",
+      cover: "",
+      price: "",
+      rating: "",
+      isFeatured: false,
+    });
+  }
+
   return (
     <div className="p-4 overflow-hidden bg-white shadow-cardShadow rounded-md">
-      <h4 className="mb-8 text-xl font-bold text-center">Add New Book</h4>
+      <h4 className="mb-8 text-xl font-bold text-center">
+        {isEdit ? "Update Book Info" : "Add New Book"}
+      </h4>
       <form className="book-form">
         <div className="space-y-2">
           <label htmlFor="name">Book Name</label>
@@ -119,14 +142,25 @@ export default function Form() {
           </label>
         </div>
 
-        <button
-          type="submit"
-          className="submit"
-          id="submit"
-          onClick={(e) => handleSubmit(e)}
-        >
-          Add Book
-        </button>
+        {isEdit ? (
+          <button
+            type="submit"
+            className="submit"
+            id="submit"
+            onClick={(e) => handleUpdate(e)}
+          >
+            Update Book
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="submit"
+            id="submit"
+            onClick={(e) => handleSubmit(e)}
+          >
+            Add Book
+          </button>
+        )}
       </form>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { remove } from "../redux/books/actionIdentifiers.js";
+import { setBookData, startEdit } from "../redux/form/actionIdentifiers.js";
 
 export default function BooksContainer() {
   const dispatch = useDispatch();
@@ -45,7 +46,13 @@ export default function BooksContainer() {
                 )}
 
                 <div className="text-gray-500 space-x-2">
-                  <button className="lws-edit">
+                  <button
+                    className="lws-edit"
+                    onClick={() => {
+                      dispatch(startEdit(true));
+                      dispatch(setBookData(book));
+                    }}
+                  >
                     <svg
                       fill="none"
                       viewBox="0 0 24 24"
