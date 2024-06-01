@@ -1,4 +1,10 @@
+import { useDispatch, useSelector } from "react-redux";
+import { searchTerm } from "../redux/filter/actionIdentifiers";
+
 export default function Header() {
+  const filter = useSelector((state) => state.filters);
+  const dispatch = useDispatch();
+
   return (
     <nav className="py-4 2xl:px-6">
       <div className="container flex items-center justify-between">
@@ -31,6 +37,8 @@ export default function Header() {
               placeholder="Filter books..."
               className="search"
               id="lws-searchBook"
+              value={filter.searchTerm}
+              onChange={(e) => dispatch(searchTerm(e.target.value))}
             />
           </div>
         </form>

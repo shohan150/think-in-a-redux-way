@@ -108,7 +108,7 @@ export default function Form() {
           <input
             id="input-Bookfeatured"
             type="checkbox"
-            name="featured"
+            name="isFeatured"
             className="w-4 h-4"
             checked={formData.isFeatured}
             onChange={(e) => handleChange(e.target.name, e.target.checked)}
