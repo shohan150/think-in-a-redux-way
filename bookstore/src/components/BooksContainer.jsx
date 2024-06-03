@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { remove } from "../redux/books/actionIdentifiers.js";
+import fetchBooks from "../redux/books/thunk/fetchBooks.js";
+import deleteBook from "../redux/books/thunk/removeBook.js";
 import { setBookData, startEdit } from "../redux/form/actionIdentifiers.js";
 
 export default function BooksContainer() {
@@ -7,8 +9,12 @@ export default function BooksContainer() {
   const books = useSelector((state) => state.books);
   const { showFeatured, searchTerm } = useSelector((state) => state.filters);
 
+  useEffect(() => {
+    dispatch(fetchBooks);
+  }, [dispatch]);
+
   const handleDelete = (bookId) => {
-    dispatch(remove(bookId));
+    dispatch(deleteBook(bookId));
   };
 
   const toogleFilter = (book) => {
@@ -18,7 +24,7 @@ export default function BooksContainer() {
 
   const searchFilter = (book) => {
     if (searchTerm.length > 0) {
-      return book.title.toLowerCase().includes(searchTerm);
+      return book.name.toLowerCase().includes(searchTerm);
     }
     return true;
   };
@@ -32,7 +38,7 @@ export default function BooksContainer() {
           <div className="book-card" key={book.id}>
             <img
               className="h-[240px] w-[170px] object-cover lws-bookThumbnail"
-              src={book.cover}
+              src={book.thumbnail}
               alt="book"
             />
             <div className="flex-1 h-full pr-2 pt-2 flex flex-col">
@@ -89,7 +95,7 @@ export default function BooksContainer() {
               </div>
 
               <div className="space-y-2 mt-4 h-full">
-                <h4 className="lws-bookName">{book.title}</h4>
+                <h4 className="lws-bookName">{book.name}</h4>
                 <p className="lws-author">{book.author}</p>
                 <h3 className="text-sm">Rating : {book.rating}</h3>
 

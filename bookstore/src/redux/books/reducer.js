@@ -1,8 +1,8 @@
-import { ADD, EDIT, REMOVE } from "./actionTypes";
+import { ADD, EDIT, LOADED, REMOVE } from "./actionTypes";
 const initialState = [
   {
     id: 1,
-    title: "The Clean Code",
+    name: "The Clean Code",
     author: "Robert C. Martin",
     rating: "4",
     price: "440",
@@ -36,6 +36,9 @@ const reducer = (state = initialState, action) => {
 
     case REMOVE:
       return state.filter((book) => book.id !== action.payload);
+
+    case LOADED:
+      return action.payload;
 
     default:
       return state;

@@ -26,6 +26,15 @@
       "rating": 4,
       "featured": true,
       "id": 4
+    },
+    {
+      "name": "hola",
+      "author": "shohan",
+      "cover": "test",
+      "price": "3",
+      "rating": "1",
+      "isFeatured": true,
+      "id": 5
     }
   ]
 }

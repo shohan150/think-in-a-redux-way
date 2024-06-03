@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { add, edit } from "../redux/books/actionIdentifiers";
+import addBook from "../redux/books/thunk/addBook";
+import updateBook from "../redux/books/thunk/updateBook";
 import { startEdit } from "../redux/form/actionIdentifiers";
 
 export default function Form() {
@@ -8,7 +9,7 @@ export default function Form() {
   const { isEdit, bookData } = useSelector((state) => state.form);
 
   const [formData, setFormData] = useState({
-    title: "",
+    name: "",
     author: "",
     cover: "",
     price: "",
@@ -27,9 +28,9 @@ export default function Form() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(add(formData));
+    dispatch(addBook(formData));
     setFormData({
-      title: "",
+      name: "",
       author: "",
       cover: "",
       price: "",
@@ -40,10 +41,10 @@ export default function Form() {
 
   function handleUpdate(event) {
     event.preventDefault();
-    dispatch(edit(formData));
+    dispatch(updateBook(formData));
     dispatch(startEdit(false));
     setFormData({
-      title: "",
+      name: "",
       author: "",
       cover: "",
       price: "",
@@ -65,8 +66,8 @@ export default function Form() {
             className="text-input"
             type="text"
             id="input-Bookname"
-            name="title"
-            value={formData.title}
+            name="name"
+            value={formData.name}
             onChange={(e) => handleChange(e.target.name, e.target.value)}
           />
         </div>
