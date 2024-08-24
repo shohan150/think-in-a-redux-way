@@ -5,6 +5,8 @@ import {
   increment as dynamicIncrement,
 } from "../redux/dynamicCounter/actions";
 
+//this component was the counter componet before. that is now turned into variableCounter. ekhane connect diye kora hoise. jodio seta lagbe na. ekhane etatke rakhar mul karon ownprops use dekhano. connet diye na kore ditectly korleo hoto. 
+
 function VariableCounter({ count, increment, decrement }) {
   return (
     <div className="p-4 h-auto flex flex-col items-center justify-center space-y-5 bg-white rounded shadow">
@@ -27,6 +29,8 @@ function VariableCounter({ count, increment, decrement }) {
   );
 }
 
+//these are used when you use connect in redux, to declare state and dipatch related with the component.
+
 const mapStateToProps = (state, ownProps) => {
   return {
     count: ownProps.dynamic ? state.dynamicCounter.value : state.counter.value,
@@ -36,10 +40,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     increment: ownProps.dynamic
-      ? (value) => dispatch(dynamicIncrement(5))
+      ? (value) => dispatch(dynamicIncrement(10))
       : () => dispatch(increment()),
     decrement: ownProps.dynamic
-      ? (value) => dispatch(dynamicDecrement(2))
+      ? (value) => dispatch(dynamicDecrement(5))
       : () => dispatch(decrement()),
   };
 };

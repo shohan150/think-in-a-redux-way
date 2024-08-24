@@ -5,7 +5,7 @@ const initialState = {
   value: 3,
 };
 
-//imports actionTypes. Main code theke action dispatch kora hle, ekahen actionType mile gele, se hisebe returns korbe updated state k r initalState er jaigai notun updaedDtate object k rakhbe.
+//imports actionTypes. Main code theke action dispatch kora hle, ekhane actionType mile gele, se hisebe returns korbe updated state k r initalState er jaigai notun updaedDtate object k rakhbe.
 
 const counterReducer = (state = initialState, action) => {
   switch (action.type) {

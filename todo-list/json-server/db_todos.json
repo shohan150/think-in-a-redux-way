@@ -44,21 +44,6 @@
       "text": "Test",
       "completed": false,
       "id": 8
-    },
-    {
-      "text": "test 4",
-      "completed": false,
-      "id": 9
-    },
-    {
-      "text": "test with fetch 1",
-      "completed": false,
-      "id": 10
-    },
-    {
-      "text": "hi dube",
-      "completed": false,
-      "id": 12
     }
   ]
 }
