@@ -11,10 +11,13 @@ const initialState = {
 };
 
 // async thunk. fetch video data asynchronously from json server using createAsyncThunk. the 2nd parameter takes an async callback that returns a promise. inside it the promise is made or requested on the getVideos function. depending on what this function returns the result of the promise depends.if successfull return the data with the promise fulfill.
-export const fetchVideos = createAsyncThunk("videos/fetchVideos", async () => {
-    const videos = await getVideos();
-    return videos;
-});
+export const fetchVideos = createAsyncThunk(
+    "videos/fetchVideos",
+    async ({ tags, search }) => {
+        const videos = await getVideos(tags, search);
+        return videos;
+    }
+);
 
 //create the videoSlice
 const videoSlice = createSlice({

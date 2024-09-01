@@ -4,14 +4,12 @@ import { fetchTags } from "../../features/tags/tagsSlice";
 import Tag from "./Tag";
 
 export default function Tags() {
+    const { tags } = useSelector((state) => state.tags);
     const dispatch = useDispatch();
 
-    const {tags, isLoading, isError, error} = useSelector((state) => state.tags);
-
-    
-    useEffect(()=>{
-        dispatch(fetchTags())
-    },[dispatch]);
+    useEffect(() => {
+        dispatch(fetchTags());
+    }, [dispatch]);
 
     return tags?.length > 0 ? (
         <section>
