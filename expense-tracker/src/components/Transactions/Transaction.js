@@ -1,8 +1,11 @@
+import { useDispatch } from "react-redux";
 import deleteImage from "../../assets/images/delete.svg";
 import editImage from "../../assets/images/edit.svg";
 
 export default function Transaction({ transaction }) {
     const { name, amount, type } = transaction || {};
+    const dispatch = useDispatch();
+
 
     return (
         <li className={`transaction ${type}`}>
