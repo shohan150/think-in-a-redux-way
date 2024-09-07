@@ -15,6 +15,8 @@ export default function Form() {
     const { isLoading, isError } = useSelector((state) => state.transaction);
     const { editing } = useSelector((state) => state.transaction) || {};
 
+    //sudhu state update hle kichu hoto na. kintu ekhane editing state update howar upor depend kore onno state update korte hocche. mane editing change hle re-render trigger kolo, shei re-render complete hoye kichu return korar agei abr onno state k change korar command pai(name, type, amount) which again triggers re-renderjetak react allow kore na. karon re-render mane se re-render hoye ekta kihu return korbe. tarpor abar state change hote pare. kintu re-render complete hobar agei state change allow kore na react, resulting in, 'too much re-render error'. ei dhoroner kaj rendering complete hobar por e korte hobe. sejonno e useEffect diyeche React team. jekhane kono state er change jonno onno state k change korte hle rendering er porei kaj ta somponno korbe. tahole state change k ekta control er modde ana gelo. jate kokhon kotha theke ki hocche precisely track kora jai. dhum dham ekta er por update hobe na.
+    
     // listen for edit mode active
     useEffect(() => {
         const { id, name, amount, type } = editing || {};
