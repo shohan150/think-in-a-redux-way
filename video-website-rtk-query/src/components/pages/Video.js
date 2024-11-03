@@ -9,7 +9,9 @@ import Player from "../video/Player";
 import RelatedVideos from "../video/related/RelatedVideos";
 
 export default function Video() {
+    //to receive the videoID from the URL
     const { videoId } = useParams();
+    //get single video data
     const { data: video, isLoading, isError } = useGetVideoQuery(videoId);
 
     let content = null;
